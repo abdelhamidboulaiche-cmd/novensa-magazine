@@ -1,0 +1,1266 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>NOVENSA — Le Magazine de l'ENSA Tanger</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,400&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet"/>
+<style>
+
+/* ═══════════════════════════════════════════
+   NOVENSA — ENSA TANGER
+   Palette: Bleu Tanger (2 mers) + Vert + Noir
+   ═══════════════════════════════════════════ */
+
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'DM Sans',sans-serif;background:#030d1a;}
+
+:root{
+  --teal:#1B8B8B;
+  --teal-light:#2BB5B5;
+  --green:#1A5C3A;
+  --green-glow:#3BDDAA;
+  --black:#020A12;
+  --dark:#071525;
+  --dark2:#0A1E30;
+  --cream:#E8F4F8;
+  --muted:#4A7A9B;
+  --muted2:#2A4A62;
+}
+
+/* ── LIGHT MODE ── */
+body.light{background:#f0f4f8;}
+body.light .top-bar{background:#e2eaf2;border-bottom-color:rgba(27,139,139,.18);}
+body.light .tb-left{color:#4A7A9B;}
+body.light .nav{background:rgba(240,244,248,.97);border-bottom-color:rgba(27,139,139,.25);}
+body.light .nl{color:#4A7A9B;}
+body.light .nl:hover,body.light .nl.active{color:#071525;}
+body.light .hero{background:#dde8f0;}
+body.light .hero-title{color:#071525;}
+body.light .hero-sub{color:#4A7A9B;}
+body.light .menu-bar{background:rgba(220,232,245,.98);border-bottom-color:rgba(27,139,139,.18);}
+body.light .mi{color:#4A7A9B;}
+body.light .mi:hover{color:#071525;}
+body.light .mi.active{color:var(--teal);}
+body.light .content{background:#e8f0f7;}
+body.light .art-card{background:#fff;border-color:rgba(27,139,139,.18);}
+body.light .art-cat{color:#4A7A9B;}
+body.light .art-title{color:#071525;}
+body.light .art-author,.art-date{color:#4A7A9B;}
+body.light .campus-feature{background:#dde8f0;}
+body.light .campus-info-title{color:#071525;}
+body.light .campus-info-text{color:#4A7A9B;}
+body.light .stages-sec{background:#dde8f0;}
+body.light .stat-c{background:#fff;border-color:rgba(27,139,139,.18);}
+body.light .stat-n{color:#071525;}
+body.light .stat-l{color:#4A7A9B;}
+body.light .prog-wrap{background:#e8f0f7;}
+body.light .prog-h{color:#4A7A9B;}
+body.light .prog-bar{background:rgba(27,139,139,.12);}
+body.light .stg-card{background:rgba(27,139,139,.06);}
+body.light .stg-co{color:#071525;}
+body.light .stg-det{color:#4A7A9B;}
+body.light .alumni-hero-sec{background:#dde8f0;}
+body.light .ali-title{color:#071525;}
+body.light .ali-sub{color:#4A7A9B;}
+body.light .proj-card{background:#fff;}
+body.light .proj-title{color:#071525;}
+body.light .proj-name{color:#4A7A9B;}
+body.light .alumni-card{background:#fff;}
+body.light .al-name{color:#071525;}
+body.light .al-role{color:#4A7A9B;}
+body.light .footer{background:#dde8f0;}
+body.light .foot-tag{color:#4A7A9B;}
+body.light .foot-copy{color:#7AABCC;}
+body.light .hero-badge,body.light .hero-stat{background:rgba(240,244,248,.95);}
+body.light .hero-badge{color:var(--teal);}
+body.light .hero-stat{color:#071525;}
+body.light .sec-label{color:#4A7A9B;}
+body.light .art-date{color:#7AABCC;}
+body.light .logo-sep{background:rgba(27,139,139,.25);}
+
+/* ── RTL ARABIC ── */
+body.ar{direction:rtl;font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;}
+body.ar .hero-content{direction:rtl;}
+body.ar .hero-visual{animation:slideR .7s .3s both;}
+body.ar .top-bar{flex-direction:row-reverse;}
+body.ar .nav{flex-direction:row-reverse;}
+body.ar .nav-links{flex-direction:row-reverse;}
+body.ar .sec-row{flex-direction:row-reverse;}
+body.ar .art-foot{flex-direction:row-reverse;}
+body.ar .art-body{text-align:right;}
+body.ar .campus-feature{direction:rtl;}
+body.ar .campus-stats{flex-direction:row-reverse;}
+body.ar .stg-card{flex-direction:row-reverse;}
+body.ar .footer{flex-direction:row-reverse;}
+body.ar .menu-bar{flex-direction:row-reverse;}
+body.ar .stages-sec .sec-row{flex-direction:row-reverse;}
+body.ar .logo-name{direction:ltr;}
+body.ar .hero-btns{flex-direction:row-reverse;}
+body.ar .alumni-inner{direction:rtl;}
+body.ar .ali-btns{flex-direction:row-reverse;}
+body.ar .proj-body{text-align:right;}
+body.ar .btn-back{direction:rtl;}
+
+/* ── TOOLBAR (dark mode + lang switch) ── */
+.lang-bar{position:fixed;bottom:20px;right:20px;z-index:999;display:flex;gap:8px;}
+body.ar .lang-bar{right:auto;left:20px;}
+.lb-btn{background:rgba(7,21,37,.9);border:0.5px solid rgba(43,181,181,.4);color:var(--teal-light);font-size:12px;font-weight:500;padding:8px 14px;border-radius:20px;cursor:pointer;backdrop-filter:blur(10px);transition:.2s;display:flex;align-items:center;gap:6px;}
+.lb-btn:hover{background:rgba(43,181,181,.15);transform:translateY(-2px);}
+body.light .lb-btn{background:rgba(240,244,248,.95);color:var(--teal);border-color:rgba(27,139,139,.3);}
+
+/* ── ANIMATIONS ── */
+@keyframes fadeDown{from{opacity:0;transform:translateY(-18px)}to{opacity:1;transform:translateY(0)}}
+@keyframes fadeUp{from{opacity:0;transform:translateY(26px)}to{opacity:1;transform:translateY(0)}}
+@keyframes slideR{from{opacity:0;transform:translateX(-32px)}to{opacity:1;transform:translateX(0)}}
+@keyframes slideL{from{opacity:0;transform:translateX(32px)}to{opacity:1;transform:translateX(0)}}
+@keyframes cardIn{from{opacity:0;transform:translateY(32px) scale(0.96)}to{opacity:1;transform:translateY(0) scale(1)}}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.2}}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-7px)}}
+@keyframes wave{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+@keyframes wave2{0%{transform:translateX(0)}100%{transform:translateX(50%)}}
+@keyframes glow{0%,100%{box-shadow:0 0 10px rgba(43,181,181,.15)}50%{box-shadow:0 0 28px rgba(43,181,181,.45)}}
+@keyframes glowG{0%,100%{box-shadow:0 0 8px rgba(59,221,170,.1)}50%{box-shadow:0 0 22px rgba(59,221,170,.35)}}
+@keyframes barFill{from{width:0}to{width:var(--w)}}
+@keyframes imgIn{from{opacity:0;transform:scale(1.06)}to{opacity:1;transform:scale(1)}}
+@keyframes ripple{0%{transform:scale(.8);opacity:1}100%{transform:scale(2.4);opacity:0}}
+@keyframes scanLine{0%{top:-5%}100%{top:105%}}
+@keyframes particleFloat{0%,100%{transform:translateY(0);opacity:.5}50%{transform:translateY(-16px);opacity:.9}}
+@keyframes navGlow{0%,100%{border-bottom-color:rgba(43,181,181,.2)}50%{border-bottom-color:rgba(43,181,181,.6)}}
+
+/* ── PAGES ── */
+.page{display:none;}
+.page.active{display:block;}
+
+/* ── TOP BAR ── */
+.top-bar{background:var(--black);padding:5px 28px;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid rgba(43,181,181,.12);}
+.tb-left{font-size:10px;color:var(--muted);letter-spacing:.8px;}
+.tb-right{display:flex;gap:12px;align-items:center;}
+.tb-dot{width:5px;height:5px;border-radius:50%;background:var(--teal-light);animation:blink 2s infinite;}
+.tb-live{font-size:10px;color:var(--teal-light);letter-spacing:.5px;}
+
+/* ── NAV ── */
+.nav{background:rgba(2,10,18,.97);padding:0 28px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid rgba(43,181,181,.2);animation:navGlow 3s infinite;position:sticky;top:0;z-index:100;}
+.nav-logo{display:flex;align-items:center;gap:10px;padding:8px 0;cursor:pointer;}
+/* ⚠️ REMPLACE le src par ton vrai chemin vers le logo ENSA */
+.ensa-logo-img{height:44px;width:auto;object-fit:contain;filter:brightness(1.1);}
+.logo-sep{width:1px;height:32px;background:rgba(43,181,181,.2);margin:0 4px;}
+.logo-name{font-family:'Playfair Display',serif;font-size:19px;font-weight:700;line-height:1;}
+.logo-name .nov{color:var(--teal-light);}
+.logo-name .e{color:var(--green-glow);}
+.logo-name .nsa{color:var(--cream);}
+.logo-sub{font-size:8px;color:var(--muted);letter-spacing:3px;margin-top:2px;}
+.nav-links{display:flex;gap:0;}
+.nl{color:var(--muted);font-size:11px;font-weight:500;cursor:pointer;padding:7px 10px;border-bottom:2px solid transparent;transition:.2s;white-space:nowrap;}
+.nl:hover,.nl.active{color:var(--cream);border-bottom-color:var(--teal-light);}
+.nl.alumni{color:var(--green-glow);}
+.nl.alumni:hover,.nl.alumni.active{color:#7FFFD4;border-bottom-color:var(--green-glow);}
+
+/* ── HERO ── */
+.hero{background:var(--black);position:relative;overflow:hidden;min-height:320px;}
+.hero-particles{position:absolute;inset:0;z-index:0;overflow:hidden;}
+.particle{position:absolute;border-radius:50%;background:rgba(43,181,181,.55);}
+.hero-content{position:relative;z-index:2;display:grid;grid-template-columns:1.1fr .9fr;gap:32px;align-items:center;padding:40px 28px 78px;}
+.hero-eyebrow{display:inline-flex;align-items:center;gap:7px;background:rgba(43,181,181,.1);border:0.5px solid rgba(43,181,181,.4);color:var(--teal-light);font-size:10px;font-weight:500;padding:5px 14px;border-radius:20px;margin-bottom:16px;letter-spacing:1px;animation:glow 3s infinite;}
+.live-dot{width:5px;height:5px;border-radius:50%;background:var(--teal-light);animation:blink 1.4s infinite;}
+.hero-title{font-family:'Playfair Display',serif;color:var(--cream);font-size:34px;line-height:1.2;margin-bottom:14px;animation:fadeUp .6s .3s both;}
+.hero-title .hl-t{color:var(--teal-light);}
+.hero-title .hl-g{color:var(--green-glow);}
+.hero-sub{color:var(--muted);font-size:12.5px;margin-bottom:24px;line-height:1.75;animation:fadeUp .6s .4s both;}
+.hero-sub strong{color:#7AABCC;font-weight:500;}
+.hero-btns{display:flex;gap:10px;animation:fadeUp .6s .5s both;}
+.btn-teal{background:var(--teal);color:#fff;border:none;padding:11px 22px;border-radius:6px;font-size:12.5px;font-weight:500;cursor:pointer;transition:.2s;}
+.btn-teal:hover{background:var(--teal-light);transform:translateY(-2px);}
+.btn-green{background:transparent;color:var(--green-glow);border:0.5px solid rgba(59,221,170,.4);padding:11px 22px;border-radius:6px;font-size:12.5px;font-weight:500;cursor:pointer;transition:.2s;}
+.btn-green:hover{background:rgba(59,221,170,.08);transform:translateY(-2px);}
+.hero-visual{animation:slideL .7s .3s both;position:relative;}
+/* ⚠️ REMPLACE le src par ton vrai chemin vers la photo du campus */
+.hero-campus-img{width:100%;height:250px;object-fit:cover;object-position:center;border-radius:10px;display:block;border:1px solid rgba(43,181,181,.3);animation:imgIn .9s .4s both;}
+.hero-badge{position:absolute;top:12px;left:12px;background:rgba(2,10,18,.92);border:0.5px solid rgba(43,181,181,.5);color:var(--teal-light);font-size:10px;padding:5px 12px;border-radius:10px;animation:float 3.5s ease-in-out infinite;backdrop-filter:blur(6px);}
+.hero-stat{position:absolute;bottom:14px;right:14px;background:rgba(2,10,18,.92);border:0.5px solid rgba(59,221,170,.25);color:var(--cream);font-size:11px;padding:9px 14px;border-radius:9px;backdrop-filter:blur(6px);animation:float 4s ease-in-out infinite .7s;}
+.hero-stat strong{display:block;font-size:18px;color:var(--green-glow);font-family:'Playfair Display',serif;}
+.ripple-wrap{position:absolute;top:16px;left:16px;pointer-events:none;}
+.ripple{position:absolute;width:10px;height:10px;border-radius:50%;border:1px solid var(--teal-light);animation:ripple 2s infinite;}
+.ripple2{animation-delay:.7s;}
+.hero-waves{position:absolute;bottom:0;left:0;right:0;height:100px;overflow:hidden;z-index:1;}
+.wave-svg{position:absolute;bottom:0;width:200%;animation:wave 8s linear infinite;}
+.wave-svg2{position:absolute;bottom:0;width:200%;animation:wave2 12s linear infinite;opacity:.45;}
+
+/* ── MENU BAR ── */
+.menu-bar{background:rgba(5,15,25,.98);border-bottom:0.5px solid rgba(43,181,181,.12);padding:0 28px;display:flex;gap:0;overflow-x:auto;}
+.mi{font-size:11px;font-weight:500;padding:11px 14px;color:var(--muted);cursor:pointer;border-bottom:2px solid transparent;transition:.2s;white-space:nowrap;}
+.mi:hover{color:var(--cream);border-bottom-color:var(--teal);}
+.mi.active{color:var(--teal-light);border-bottom-color:var(--teal-light);}
+
+/* ── CONTENT ── */
+.content{background:var(--dark);padding:28px 28px 0;}
+.sec-row{display:flex;align-items:center;justify-content:space-between;margin-bottom:18px;}
+.sec-label{font-size:10px;color:var(--muted);font-weight:500;letter-spacing:2px;text-transform:uppercase;border-bottom:1.5px solid var(--teal);padding-bottom:6px;display:inline-block;}
+.see-all{font-size:11.5px;color:var(--teal-light);cursor:pointer;text-decoration:underline;text-underline-offset:3px;}
+
+/* ── CARDS ── */
+.arts-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:28px;}
+.art-card{background:var(--dark2);border-radius:10px;overflow:hidden;border:0.5px solid rgba(43,181,181,.1);cursor:pointer;transition:transform .22s,border-color .22s;}
+.art-card:hover{transform:translateY(-5px);border-color:rgba(43,181,181,.4);}
+.art-card:nth-child(1){animation:cardIn .5s .08s both;}
+.art-card:nth-child(2){animation:cardIn .5s .18s both;}
+.art-card:nth-child(3){animation:cardIn .5s .28s both;}
+.art-img-wrap{position:relative;height:108px;overflow:hidden;}
+.art-img{width:100%;height:100%;object-fit:cover;transition:transform .35s;}
+.art-card:hover .art-img{transform:scale(1.07);}
+.art-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(2,10,18,.6),transparent);}
+.art-tag{position:absolute;top:8px;left:8px;background:var(--teal);color:#fff;font-size:9px;font-weight:500;padding:3px 8px;border-radius:10px;text-transform:uppercase;letter-spacing:.5px;}
+.art-body{padding:13px 15px;}
+.art-cat{font-size:9.5px;color:var(--muted);font-weight:500;letter-spacing:1px;text-transform:uppercase;margin-bottom:5px;}
+.art-title{font-family:'Playfair Display',serif;font-size:13.5px;color:var(--cream);line-height:1.4;margin-bottom:9px;}
+.art-foot{display:flex;align-items:center;justify-content:space-between;}
+.ava{width:21px;height:21px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:8.5px;font-weight:500;}
+.av-t{background:rgba(43,181,181,.18);color:var(--teal-light);}
+.av-g{background:rgba(59,221,170,.15);color:var(--green-glow);}
+.av-b{background:rgba(74,122,155,.2);color:#7AABCC;}
+.art-author{font-size:10.5px;color:var(--muted);margin-left:6px;}
+.art-date{font-size:10.5px;color:var(--muted2);}
+
+/* ── CAMPUS FEATURE ── */
+.campus-feature{background:var(--black);margin:0 -28px;padding:28px;border-top:1px solid rgba(43,181,181,.1);border-bottom:1px solid rgba(43,181,181,.1);display:grid;grid-template-columns:.9fr 1.1fr;gap:24px;align-items:center;}
+.campus-img-wrap{position:relative;border-radius:10px;overflow:hidden;}
+.campus-real-img{width:100%;height:180px;object-fit:cover;display:block;transition:transform .35s;}
+.campus-img-wrap:hover .campus-real-img{transform:scale(1.04);}
+.campus-img-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(2,10,18,.5),transparent 60%);}
+.campus-img-badge{position:absolute;bottom:12px;left:12px;background:rgba(2,10,18,.88);border:0.5px solid rgba(43,181,181,.4);color:var(--teal-light);font-size:10px;padding:4px 11px;border-radius:8px;}
+.campus-info-eyebrow{display:inline-block;background:rgba(43,181,181,.08);border:0.5px solid rgba(43,181,181,.3);color:var(--teal-light);font-size:9.5px;padding:4px 10px;border-radius:10px;margin-bottom:12px;}
+.campus-info-title{font-family:'Playfair Display',serif;color:var(--cream);font-size:20px;line-height:1.3;margin-bottom:10px;}
+.campus-info-text{font-size:12px;color:var(--muted);line-height:1.75;margin-bottom:16px;}
+.campus-stats{display:flex;gap:20px;}
+.cs-num{font-family:'Playfair Display',serif;font-size:22px;color:var(--teal-light);font-weight:700;display:block;}
+.cs-label{font-size:10px;color:var(--muted);margin-top:2px;display:block;}
+
+/* ── STAGES ── */
+.stages-sec{background:var(--black);padding:28px;margin:0 -28px;border-top:1px solid rgba(43,181,181,.1);}
+.stages-sec .sec-label{color:var(--muted2);border-bottom-color:var(--teal-light);}
+.stg-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:18px;}
+.stg-card{background:rgba(10,37,64,.6);border-radius:9px;padding:14px 16px;border:0.5px solid rgba(43,181,181,.1);display:flex;gap:14px;cursor:pointer;transition:border-color .2s,background .2s,transform .2s;}
+.stg-card:hover{border-color:rgba(43,181,181,.4);background:rgba(43,181,181,.06);transform:translateY(-2px);}
+.stg-icon{width:38px;height:38px;border-radius:7px;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:16px;}
+.si-t{background:rgba(43,181,181,.1);border:0.5px solid rgba(43,181,181,.25);}
+.si-g{background:rgba(26,92,58,.2);border:0.5px solid rgba(59,221,170,.25);}
+.stg-co{font-size:13px;font-weight:500;color:var(--cream);margin-bottom:2px;}
+.stg-det{font-size:11px;color:var(--muted);margin-bottom:6px;}
+.stg-tag{display:inline-block;font-size:9.5px;font-weight:500;padding:3px 8px;border-radius:10px;}
+.t-open{background:rgba(59,221,170,.1);color:var(--green-glow);border:0.5px solid rgba(59,221,170,.3);}
+.t-hot{background:rgba(43,181,181,.1);color:var(--teal-light);border:0.5px solid rgba(43,181,181,.3);}
+.t-full{background:rgba(74,122,155,.1);color:var(--muted);border:0.5px solid rgba(74,122,155,.2);}
+
+/* ── STATS ── */
+.stats-row{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;padding:24px 28px;}
+.stat-c{background:var(--dark2);border-radius:9px;padding:18px;border:0.5px solid rgba(43,181,181,.1);text-align:center;transition:border-color .2s,transform .2s;}
+.stat-c:hover{border-color:rgba(43,181,181,.4);transform:translateY(-2px);}
+.stat-c:nth-child(1){animation:fadeUp .6s .1s both;}
+.stat-c:nth-child(2){animation:fadeUp .6s .2s both;}
+.stat-c:nth-child(3){animation:fadeUp .6s .3s both;}
+.stat-c:nth-child(4){animation:fadeUp .6s .4s both;}
+.stat-n{font-family:'Playfair Display',serif;font-size:30px;color:var(--cream);font-weight:700;line-height:1;margin-bottom:5px;}
+.stat-n .hl{color:var(--teal-light);}
+.stat-l{font-size:11px;color:var(--muted);}
+
+/* ── PROGRESS BARS ── */
+.prog-wrap{padding:0 28px 28px;background:var(--dark);}
+.prog-item{margin-bottom:14px;}
+.prog-h{display:flex;justify-content:space-between;font-size:12px;color:var(--muted);margin-bottom:6px;}
+.prog-bar{height:4px;background:rgba(43,181,181,.1);border-radius:10px;overflow:hidden;}
+.prog-fill{height:100%;border-radius:10px;width:var(--w);animation:barFill 1.4s cubic-bezier(.4,0,.2,1) var(--d) both;}
+.pf-teal{background:linear-gradient(90deg,var(--teal),var(--teal-light));}
+.pf-green{background:linear-gradient(90deg,var(--green),var(--green-glow));}
+.pf-blue{background:linear-gradient(90deg,#0A2540,#0E4D6E);}
+
+/* ── ALUMNI ── */
+.alumni-hero-sec{background:var(--black);padding:40px 28px;position:relative;overflow:hidden;}
+.ali-grid-bg{position:absolute;inset:0;background-image:linear-gradient(rgba(43,181,181,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(43,181,181,.04) 1px,transparent 1px);background-size:40px 40px;}
+.ali-scan{position:absolute;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(43,181,181,.4),transparent);animation:scanLine 4s linear infinite;}
+.alumni-inner{position:relative;z-index:2;display:grid;grid-template-columns:1fr auto;gap:32px;align-items:center;}
+.ali-eyebrow{display:inline-flex;align-items:center;gap:7px;background:rgba(59,221,170,.1);border:0.5px solid rgba(59,221,170,.35);color:var(--green-glow);font-size:10px;font-weight:500;padding:5px 14px;border-radius:20px;margin-bottom:16px;letter-spacing:1px;}
+.ali-title{font-family:'Playfair Display',serif;color:var(--cream);font-size:28px;line-height:1.22;margin-bottom:12px;}
+.ali-title em{color:var(--green-glow);font-style:italic;}
+.ali-sub{font-size:12.5px;color:var(--muted);line-height:1.75;margin-bottom:20px;}
+.ali-btns{display:flex;gap:10px;}
+.btn-gsolid{background:var(--green);color:#fff;border:none;padding:10px 20px;border-radius:6px;font-size:12px;font-weight:500;cursor:pointer;transition:.2s;}
+.btn-gsolid:hover{background:#2A7A50;transform:translateY(-2px);}
+.ali-stats-mini{display:flex;flex-direction:column;gap:10px;flex-shrink:0;}
+.asm{background:rgba(43,181,181,.06);border:0.5px solid rgba(43,181,181,.2);border-radius:8px;padding:12px 18px;text-align:center;transition:transform .2s;}
+.asm:hover{transform:scale(1.04);}
+.asm-num{font-family:'Playfair Display',serif;font-size:26px;font-weight:700;color:var(--teal-light);line-height:1;}
+.asm-label{font-size:10px;color:var(--muted);margin-top:3px;}
+
+/* ── PROJECTS ── */
+.proj-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:24px;}
+.proj-card{background:var(--dark2);border-radius:10px;overflow:hidden;border:0.5px solid rgba(59,221,170,.1);cursor:pointer;transition:transform .22s,border-color .22s;}
+.proj-card:hover{transform:translateY(-4px);border-color:rgba(59,221,170,.4);}
+.proj-card:nth-child(1){animation:cardIn .5s .1s both;}
+.proj-card:nth-child(2){animation:cardIn .5s .2s both;}
+.proj-card:nth-child(3){animation:cardIn .5s .3s both;}
+.proj-img{width:100%;height:100px;object-fit:cover;display:block;transition:transform .3s;}
+.proj-card:hover .proj-img{transform:scale(1.06);}
+.proj-body{padding:12px 14px;}
+.proj-sector{font-size:9.5px;color:var(--green-glow);font-weight:500;letter-spacing:1px;text-transform:uppercase;margin-bottom:5px;}
+.proj-title{font-family:'Playfair Display',serif;font-size:13px;color:var(--cream);line-height:1.4;margin-bottom:9px;}
+.proj-ava{width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:500;background:rgba(59,221,170,.12);color:var(--green-glow);flex-shrink:0;}
+.proj-name{font-size:11px;color:var(--muted);}
+.proj-promo{font-size:10px;color:var(--muted2);margin-left:auto;}
+.proj-tags{display:flex;gap:5px;margin-top:8px;flex-wrap:wrap;}
+.proj-tag{font-size:9px;background:rgba(43,181,181,.08);color:var(--teal-light);border:0.5px solid rgba(43,181,181,.2);padding:2px 7px;border-radius:8px;}
+
+/* ── ALUMNI PROFILES ── */
+.alumni-profiles{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;}
+.alumni-card{background:var(--dark2);border-radius:10px;padding:16px;border:0.5px solid rgba(43,181,181,.1);text-align:center;cursor:pointer;transition:border-color .2s,transform .2s;}
+.alumni-card:hover{border-color:rgba(59,221,170,.4);transform:translateY(-3px);}
+.alumni-card:nth-child(1){animation:cardIn .5s .05s both;}
+.alumni-card:nth-child(2){animation:cardIn .5s .15s both;}
+.alumni-card:nth-child(3){animation:cardIn .5s .25s both;}
+.alumni-card:nth-child(4){animation:cardIn .5s .35s both;}
+.al-ava{width:48px;height:48px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:15px;font-weight:500;margin:0 auto 10px;border:1.5px solid rgba(43,181,181,.25);}
+.al-name{font-size:13px;font-weight:500;color:var(--cream);margin-bottom:3px;}
+.al-role{font-size:11px;color:var(--muted);margin-bottom:8px;line-height:1.4;}
+.al-co{display:inline-block;font-size:10px;background:rgba(59,221,170,.08);color:var(--green-glow);border:0.5px solid rgba(59,221,170,.2);padding:2px 8px;border-radius:8px;}
+.al-promo{font-size:10px;color:var(--muted2);margin-top:5px;}
+
+/* ── FOOTER ── */
+.footer{background:var(--black);padding:20px 28px;display:flex;justify-content:space-between;align-items:center;border-top:1px solid rgba(43,181,181,.2);}
+.foot-logo{display:flex;align-items:center;gap:8px;}
+.foot-logo-img{height:28px;width:auto;filter:brightness(.85);}
+.foot-logo-text{font-family:'Playfair Display',serif;font-size:15px;}
+.foot-logo-text .t{color:var(--teal-light);}
+.foot-logo-text .e{color:var(--green-glow);}
+.foot-logo-text .n{color:var(--cream);}
+.foot-tag{font-size:11px;color:var(--muted);font-style:italic;}
+.foot-copy{font-size:10px;color:var(--muted2);}
+
+/* ── BACK BUTTON ── */
+.btn-back{background:transparent;color:var(--teal-light);border:0.5px solid rgba(43,181,181,.3);padding:9px 18px;border-radius:6px;font-size:12.5px;cursor:pointer;transition:.2s;margin-top:24px;margin-bottom:28px;display:inline-block;}
+.btn-back:hover{color:#fff;border-color:rgba(255,255,255,.3);}
+
+</style>
+</head>
+<body>
+
+<!-- ════════════════════════════════════════
+     PAGE: ACCUEIL
+     ════════════════════════════════════════ -->
+<div id="home" class="page active">
+
+  <!-- TOP BAR -->
+  <div class="top-bar">
+    <span class="tb-left">✦ NOVENSA — LE MAGAZINE DE L'ENSA TANGER · Voir. Savoir. Partager.</span>
+    <div class="tb-right">
+      <div class="tb-dot"></div>
+      <span class="tb-live">EN LIGNE · Printemps 2025</span>
+    </div>
+  </div>
+
+  <!-- NAV -->
+  <nav class="nav">
+    <div class="nav-logo" onclick="showPage('home')">
+      <!-- ⚠️ REMPLACE "images/logo-ensa.png" par ton chemin réel -->
+      <img class="ensa-logo-img" src="images/logo-ensa.png" alt="ENSA Tanger" onerror="this.style.display='none'"/>
+      <div class="logo-sep"></div>
+      <div>
+        <div class="logo-name"><span class="nov">NOV</span><span class="e">E</span><span class="nsa">NSA</span></div>
+        <div class="logo-sub">LE MAGAZINE</div>
+      </div>
+    </div>
+    <div class="nav-links">
+      <span class="nl active"   onclick="showPage('home')">Accueil</span>
+      <span class="nl"          onclick="showPage('etudiants')">Étudiants</span>
+      <span class="nl">Enseignants</span>
+      <span class="nl"          onclick="showPage('carrieres')">Carrières</span>
+      <span class="nl">Actualités</span>
+      <span class="nl">Archives</span>
+      <span class="nl alumni"   onclick="showPage('alumni')">Alumni ✦</span>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-particles" id="particles"></div>
+    <div class="hero-content">
+      <div>
+        <div class="hero-eyebrow">
+          <div class="live-dot"></div>
+          À LA UNE · TANGER — DEUX MERS 🌊
+        </div>
+        <div class="hero-title">
+          L'ingénieur de<br>
+          <span class="hl-t">demain</span> se forge<br>
+          à <span class="hl-g">l'ENSA Tanger</span>
+        </div>
+        <div class="hero-sub">
+          Là où la Méditerranée rencontre l'Atlantique,<br>
+          <strong>NOVENSA</strong> raconte votre école.
+        </div>
+        <div class="hero-btns">
+          <button class="btn-teal" onclick="showPage('etudiants')">Explorer →</button>
+          <button class="btn-green" onclick="showPage('alumni')">Espace Alumni ✦</button>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <!-- ⚠️ REMPLACE "images/campus.jpg" par ton chemin réel -->
+        <img class="hero-campus-img" src="images/campus.jpg" alt="ENSA Tanger Campus"
+             onerror="this.src='https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=600&q=80'"/>
+        <div class="ripple-wrap">
+          <div class="ripple"></div>
+          <div class="ripple ripple2"></div>
+        </div>
+        <div class="hero-badge">📍 ENSA Tanger — Campus Réel</div>
+        <div class="hero-stat">
+          <strong>2 400+</strong>Étudiants actifs
+        </div>
+      </div>
+    </div>
+    <!-- WAVES -->
+    <div class="hero-waves">
+      <svg class="wave-svg" viewBox="0 0 1440 80" preserveAspectRatio="none" style="height:80px;">
+        <path d="M0,40 C180,80 360,0 540,40 C720,80 900,0 1080,40 C1260,80 1440,20 1440,40 L1440,80 L0,80Z" fill="rgba(43,181,181,0.13)"/>
+      </svg>
+      <svg class="wave-svg2" viewBox="0 0 1440 80" preserveAspectRatio="none" style="height:80px;">
+        <path d="M0,30 C200,70 400,10 600,50 C800,90 1000,10 1200,40 C1320,60 1440,30 1440,30 L1440,80 L0,80Z" fill="rgba(26,92,58,0.1)"/>
+      </svg>
+    </div>
+  </div>
+
+  <!-- MENU BAR -->
+  <div class="menu-bar">
+    <span class="mi active">Derniers articles</span>
+    <span class="mi">Vie du campus</span>
+    <span class="mi">Opinions</span>
+    <span class="mi">Ressources & Cours</span>
+    <span class="mi">Événements</span>
+    <span class="mi">Calendrier</span>
+  </div>
+
+  <!-- ARTICLES -->
+  <div class="content">
+    <div class="sec-row">
+      <span class="sec-label">Derniers Articles</span>
+      <span class="see-all">Voir tout →</span>
+    </div>
+    <div class="arts-grid">
+      <!-- CARD 1 -->
+      <div class="art-card">
+        <div class="art-img-wrap">
+          <!-- ⚠️ REMPLACE par ton image -->
+          <img class="art-img" src="https://images.unsplash.com/photo-1498243691581-b145c3f54a5a?w=400&q=75" alt="Étudiants"/>
+          <div class="art-overlay"></div>
+          <span class="art-tag">Vie campus</span>
+        </div>
+        <div class="art-body">
+          <div class="art-cat">Étudiants · Campus</div>
+          <div class="art-title">Les clubs de l'ENSA à rejoindre absolument en 2025</div>
+          <div class="art-foot">
+            <div style="display:flex;align-items:center">
+              <div class="ava av-t">SB</div>
+              <span class="art-author">Sara Benali</span>
+            </div>
+            <span class="art-date">10 Avr</span>
+          </div>
+        </div>
+      </div>
+      <!-- CARD 2 -->
+      <div class="art-card">
+        <div class="art-img-wrap">
+          <img class="art-img" src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=400&q=75" alt="Alumni"/>
+          <div class="art-overlay"></div>
+          <span class="art-tag">Alumni</span>
+        </div>
+        <div class="art-body">
+          <div class="art-cat">Interviews · Alumni</div>
+          <div class="art-title">Un alumnus chez Google : son parcours depuis l'ENSA Tanger</div>
+          <div class="art-foot">
+            <div style="display:flex;align-items:center">
+              <div class="ava av-g">AT</div>
+              <span class="art-author">Anas Tazi</span>
+            </div>
+            <span class="art-date">8 Avr</span>
+          </div>
+        </div>
+      </div>
+      <!-- CARD 3 -->
+      <div class="art-card">
+        <div class="art-img-wrap">
+          <img class="art-img" src="https://images.unsplash.com/photo-1434030216411-0b793f4b4173?w=400&q=75" alt="Révision"/>
+          <div class="art-overlay"></div>
+          <span class="art-tag">Conseils</span>
+        </div>
+        <div class="art-body">
+          <div class="art-cat">Conseils · Études</div>
+          <div class="art-title">Méthodes de révision pour réussir les partiels à l'ENSA</div>
+          <div class="art-foot">
+            <div style="display:flex;align-items:center">
+              <div class="ava av-b">FZ</div>
+              <span class="art-author">Fatima Zahrae</span>
+            </div>
+            <span class="art-date">5 Avr</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CAMPUS FEATURE -->
+    <div class="campus-feature">
+      <div class="campus-img-wrap">
+        <img class="campus-real-img" src="images/campus.jpg" alt="ENSA Tanger"
+             onerror="this.src='https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=500&q=75'"/>
+        <div class="campus-img-overlay"></div>
+        <div class="campus-img-badge">🏛️ ENSA Tanger — Université Abd El Malek Saâdi</div>
+      </div>
+      <div class="campus-info">
+        <div class="campus-info-eyebrow">✦ NOTRE CAMPUS</div>
+        <div class="campus-info-title">École Nationale des Sciences Appliquées de Tanger</div>
+        <div class="campus-info-text">Rattachée à l'Université Abd El Malek Saâdi, l'ENSA Tanger forme les ingénieurs de demain dans un cadre moderne, entre Méditerranée et Atlantique.</div>
+        <div class="campus-stats">
+          <div><span class="cs-num">2400+</span><span class="cs-label">Étudiants</span></div>
+          <div><span class="cs-num">5</span><span class="cs-label">Filières</span></div>
+          <div><span class="cs-num">340+</span><span class="cs-label">Alumni</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- STAGES -->
+    <div class="stages-sec">
+      <div class="sec-row">
+        <span class="sec-label" style="color:var(--muted2);border-bottom-color:var(--teal-light)">Carrières & Stages</span>
+        <span class="see-all" onclick="showPage('carrieres')">Voir tout →</span>
+      </div>
+      <div class="stg-grid">
+        <div class="stg-card"><div class="stg-icon si-t">🏭</div><div><div class="stg-co">OCP Group — Casablanca</div><div class="stg-det">Stage PFE · Génie Informatique · 6 mois</div><span class="stg-tag t-open">Ouvert</span></div></div>
+        <div class="stg-card"><div class="stg-icon si-g">📡</div><div><div class="stg-co">Inwi — Rabat</div><div class="stg-det">Stage · Réseaux & Télécoms</div><span class="stg-tag t-hot">Urgent</span></div></div>
+        <div class="stg-card"><div class="stg-icon si-t">🏦</div><div><div class="stg-co">Bank Al-Maghrib — Rabat</div><div class="stg-det">Stage PFE · Génie Civil</div><span class="stg-tag t-open">Ouvert</span></div></div>
+        <div class="stg-card"><div class="stg-icon si-g">📱</div><div><div class="stg-co">Maroc Telecom — Casablanca</div><div class="stg-det">Stage · Systèmes d'information</div><span class="stg-tag t-full">Complet</span></div></div>
+      </div>
+    </div>
+
+    <!-- STATS -->
+    <div class="stats-row">
+      <div class="stat-c"><div class="stat-n">24<span class="hl">+</span></div><div class="stat-l">Articles publiés</div></div>
+      <div class="stat-c"><div class="stat-n">12<span class="hl">+</span></div><div class="stat-l">Stages disponibles</div></div>
+      <div class="stat-c"><div class="stat-n">6<span class="hl">+</span></div><div class="stat-l">Interviews alumni</div></div>
+      <div class="stat-c"><div class="stat-n">340<span class="hl">+</span></div><div class="stat-l">Alumni connectés</div></div>
+    </div>
+
+    <!-- PROGRESS BARS -->
+    <div class="prog-wrap">
+      <div class="prog-item">
+        <div class="prog-h"><span>Génie Informatique</span><span style="color:var(--teal-light)">78%</span></div>
+        <div class="prog-bar"><div class="prog-fill pf-teal" style="--w:78%;--d:.2s"></div></div>
+      </div>
+      <div class="prog-item">
+        <div class="prog-h"><span>Génie Civil</span><span style="color:var(--green-glow)">55%</span></div>
+        <div class="prog-bar"><div class="prog-fill pf-green" style="--w:55%;--d:.4s"></div></div>
+      </div>
+      <div class="prog-item">
+        <div class="prog-h"><span>Génie Électrique</span><span style="color:#7AABCC">67%</span></div>
+        <div class="prog-bar"><div class="prog-fill pf-blue" style="--w:67%;--d:.6s"></div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer">
+    <div class="foot-logo">
+      <img class="foot-logo-img" src="images/logo-ensa.png" alt="ENSA" onerror="this.style.display='none'"/>
+      <div class="foot-logo-text"><span class="t">NOV</span><span class="e">E</span><span class="n">NSA</span></div>
+    </div>
+    <div class="foot-tag">Voir. Savoir. Partager. — Tanger, deux mers 🌊</div>
+    <div class="foot-copy">© 2025 NOVENSA — ENSA Tanger</div>
+  </div>
+</div>
+
+
+<!-- ════════════════════════════════════════
+     PAGE: ALUMNI
+     ════════════════════════════════════════ -->
+<div id="alumni" class="page">
+
+  <div class="top-bar">
+    <span class="tb-left">✦ NOVENSA — ENSA TANGER</span>
+    <div class="tb-right">
+      <div class="tb-dot" style="background:var(--green-glow)"></div>
+      <span class="tb-live" style="color:var(--green-glow)">ESPACE ALUMNI</span>
+    </div>
+  </div>
+
+  <nav class="nav">
+    <div class="nav-logo" onclick="showPage('home')">
+      <img class="ensa-logo-img" src="images/logo-ensa.png" alt="ENSA" onerror="this.style.display='none'"/>
+      <div class="logo-sep"></div>
+      <div>
+        <div class="logo-name"><span class="nov">NOV</span><span class="e">E</span><span class="nsa">NSA</span></div>
+        <div class="logo-sub">LE MAGAZINE</div>
+      </div>
+    </div>
+    <div class="nav-links">
+      <span class="nl" onclick="showPage('home')">Accueil</span>
+      <span class="nl" onclick="showPage('etudiants')">Étudiants</span>
+      <span class="nl">Enseignants</span>
+      <span class="nl" onclick="showPage('carrieres')">Carrières</span>
+      <span class="nl">Actualités</span>
+      <span class="nl">Archives</span>
+      <span class="nl alumni active">Alumni ✦</span>
+    </div>
+  </nav>
+
+  <div class="alumni-hero-sec">
+    <div class="ali-grid-bg"></div>
+    <div class="ali-scan"></div>
+    <div class="alumni-inner">
+      <div>
+        <div class="ali-eyebrow">✦ ESPACE ALUMNI NOVENSA</div>
+        <div class="ali-title">Vos projets sont<br>notre <em>inspiration</em></div>
+        <div class="ali-sub">Un espace dédié aux ingénieurs diplômés de l'ENSA Tanger pour partager leurs réalisations, inspirer les étudiants d'aujourd'hui et rester connectés à leur école.</div>
+        <div class="ali-btns">
+          <button class="btn-gsolid">Soumettre mon projet</button>
+          <button class="btn-green">Rejoindre le réseau →</button>
+        </div>
+      </div>
+      <div class="ali-stats-mini">
+        <div class="asm"><div class="asm-num">340+</div><div class="asm-label">Alumni connectés</div></div>
+        <div class="asm"><div class="asm-num">48</div><div class="asm-label">Projets partagés</div></div>
+        <div class="asm"><div class="asm-num">12</div><div class="asm-label">Promotions</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="content" style="padding-bottom:0;">
+    <!-- CAMPUS BANNER -->
+    <div style="border-radius:10px;overflow:hidden;margin:28px 0 24px;position:relative;">
+      <img style="width:100%;height:150px;object-fit:cover;object-position:center top;display:block;" src="images/campus.jpg" alt="Campus" onerror="this.style.display='none'"/>
+      <div style="position:absolute;inset:0;background:linear-gradient(to right,rgba(2,10,18,.75),transparent);display:flex;align-items:center;padding:20px 24px;">
+        <div>
+          <div style="color:var(--teal-light);font-size:10px;letter-spacing:2px;margin-bottom:6px;">ENSA TANGER</div>
+          <div style="font-family:'Playfair Display',serif;color:#fff;font-size:18px;">École Nationale des Sciences Appliquées</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- PROJECTS -->
+    <div class="sec-row"><span class="sec-label">Projets Alumni · Inspiration</span><span class="see-all">Tous les projets →</span></div>
+    <div class="proj-grid">
+      <div class="proj-card">
+        <img class="proj-img" src="https://images.unsplash.com/photo-1518770660439-4636190af475?w=400&q=75" alt="Tech"/>
+        <div class="proj-body">
+          <div class="proj-sector">Tech · Intelligence Artificielle</div>
+          <div class="proj-title">Système de détection prédictive pour l'industrie minière</div>
+          <div style="display:flex;align-items:center;gap:7px;">
+            <div class="proj-ava">KA</div><span class="proj-name">Karim Alaoui</span><span class="proj-promo">2019</span>
+          </div>
+          <div class="proj-tags"><span class="proj-tag">Python</span><span class="proj-tag">ML</span><span class="proj-tag">OCP</span></div>
+        </div>
+      </div>
+      <div class="proj-card">
+        <img class="proj-img" src="https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?w=400&q=75" alt="Énergie"/>
+        <div class="proj-body">
+          <div class="proj-sector">Énergie · Durable</div>
+          <div class="proj-title">Optimisation des réseaux électriques intelligents</div>
+          <div style="display:flex;align-items:center;gap:7px;">
+            <div class="proj-ava">LB</div><span class="proj-name">Leila Bakkali</span><span class="proj-promo">2020</span>
+          </div>
+          <div class="proj-tags"><span class="proj-tag">Smart Grid</span><span class="proj-tag">MATLAB</span></div>
+        </div>
+      </div>
+      <div class="proj-card">
+        <img class="proj-img" src="https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?w=400&q=75" alt="Civil"/>
+        <div class="proj-body">
+          <div class="proj-sector">Civil · Infrastructure</div>
+          <div class="proj-title">Conception BIM d'un complexe hospitalier à Tanger Med</div>
+          <div style="display:flex;align-items:center;gap:7px;">
+            <div class="proj-ava">YM</div><span class="proj-name">Yassine Moussaoui</span><span class="proj-promo">2018</span>
+          </div>
+          <div class="proj-tags"><span class="proj-tag">BIM</span><span class="proj-tag">Revit</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ALUMNI PROFILES -->
+    <div class="sec-row"><span class="sec-label">Portraits Diplômés</span><span class="see-all">Voir tous →</span></div>
+    <div class="alumni-profiles" style="margin-bottom:28px;">
+      <div class="alumni-card"><div class="al-ava" style="background:rgba(43,181,181,.15);color:var(--teal-light);">KA</div><div class="al-name">Karim Alaoui</div><div class="al-role">Data Engineer chez OCP</div><div class="al-co">OCP Group</div><div class="al-promo">Promo 2019 · GI</div></div>
+      <div class="alumni-card"><div class="al-ava" style="background:rgba(59,221,170,.12);color:var(--green-glow);">LB</div><div class="al-name">Leila Bakkali</div><div class="al-role">Ingénieure R&D chez ONE</div><div class="al-co">ONE Maroc</div><div class="al-promo">Promo 2020 · GE</div></div>
+      <div class="alumni-card"><div class="al-ava" style="background:rgba(74,122,155,.2);color:#7AABCC;">YM</div><div class="al-name">Yassine Moussaoui</div><div class="al-role">Chef de projet BIM</div><div class="al-co">Bouygues Maroc</div><div class="al-promo">Promo 2018 · GC</div></div>
+      <div class="alumni-card"><div class="al-ava" style="background:rgba(43,181,181,.15);color:var(--teal-light);">SH</div><div class="al-name">Salma Haddad</div><div class="al-role">Software Engineer</div><div class="al-co">Google</div><div class="al-promo">Promo 2017 · GI</div></div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <div class="foot-logo">
+      <img class="foot-logo-img" src="images/logo-ensa.png" alt="ENSA" onerror="this.style.display='none'"/>
+      <div class="foot-logo-text"><span class="t">NOV</span><span class="e">E</span><span class="n">NSA</span></div>
+    </div>
+    <div class="foot-tag">Voir. Savoir. Partager. 🌊</div>
+    <div class="foot-copy">© 2025 NOVENSA — ENSA Tanger</div>
+  </div>
+</div>
+
+
+<!-- ════════════════════════════════════════
+     PAGE: ÉTUDIANTS
+     ════════════════════════════════════════ -->
+<div id="etudiants" class="page">
+
+  <div class="top-bar">
+    <span class="tb-left">✦ NOVENSA — ENSA TANGER</span>
+    <div class="tb-right"><div class="tb-dot"></div><span class="tb-live">Printemps 2025</span></div>
+  </div>
+
+  <nav class="nav">
+    <div class="nav-logo" onclick="showPage('home')">
+      <img class="ensa-logo-img" src="images/logo-ensa.png" alt="ENSA" onerror="this.style.display='none'"/>
+      <div class="logo-sep"></div>
+      <div>
+        <div class="logo-name"><span class="nov">NOV</span><span class="e">E</span><span class="nsa">NSA</span></div>
+        <div class="logo-sub">LE MAGAZINE</div>
+      </div>
+    </div>
+    <div class="nav-links">
+      <span class="nl" onclick="showPage('home')">Accueil</span>
+      <span class="nl active">Étudiants</span>
+      <span class="nl">Enseignants</span>
+      <span class="nl" onclick="showPage('carrieres')">Carrières</span>
+      <span class="nl">Actualités</span>
+      <span class="nl">Archives</span>
+      <span class="nl alumni" onclick="showPage('alumni')">Alumni ✦</span>
+    </div>
+  </nav>
+
+  <div class="menu-bar">
+    <span class="mi active">Réalisations</span>
+    <span class="mi">Articles & Opinions</span>
+    <span class="mi">Vie du campus</span>
+    <span class="mi">Ressources & Cours</span>
+  </div>
+
+  <div class="content" style="padding-bottom:28px;">
+    <img style="width:100%;height:140px;object-fit:cover;border-radius:10px;margin:28px 0 24px;display:block;border:0.5px solid rgba(43,181,181,.2);"
+         src="images/campus.jpg" alt="Campus" onerror="this.style.display='none'"/>
+    <div class="sec-row"><span class="sec-label">Réalisations Étudiants</span><span class="see-all">Voir tout →</span></div>
+    <div class="arts-grid">
+      <div class="art-card"><div class="art-img-wrap"><img class="art-img" src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?w=400&q=75" alt="Projet"/><div class="art-overlay"></div><span class="art-tag">Réalisation</span></div><div class="art-body"><div class="art-cat">Génie Informatique</div><div class="art-title">Application de gestion des absences ENSA</div><div class="art-foot"><div style="display:flex;align-items:center"><div class="ava av-t">MO</div><span class="art-author">M. Ouali</span></div><span class="art-date">Promo 2025</span></div></div></div>
+      <div class="art-card"><div class="art-img-wrap"><img class="art-img" src="https://images.unsplash.com/photo-1508739773434-c26b3d09e071?w=400&q=75" alt="Civil"/><div class="art-overlay"></div><span class="art-tag">Réalisation</span></div><div class="art-body"><div class="art-cat">Génie Civil</div><div class="art-title">Modélisation sismique d'un pont à haubans</div><div class="art-foot"><div style="display:flex;align-items:center"><div class="ava av-g">AB</div><span class="art-author">A. Berrada</span></div><span class="art-date">Promo 2025</span></div></div></div>
+      <div class="art-card"><div class="art-img-wrap"><img class="art-img" src="https://images.unsplash.com/photo-1516116216624-53e697fedbea?w=400&q=75" alt="Drone"/><div class="art-overlay"></div><span class="art-tag">Innovation</span></div><div class="art-body"><div class="art-cat">Génie Électrique</div><div class="art-title">Drone autonome pour inspection de lignes HT</div><div class="art-foot"><div style="display:flex;align-items:center"><div class="ava av-b">NE</div><span class="art-author">N. El Fassi</span></div><span class="art-date">Promo 2025</span></div></div></div>
+    </div>
+    <button class="btn-back" onclick="showPage('home')">← Retour à l'accueil</button>
+  </div>
+
+  <div class="footer">
+    <div class="foot-logo">
+      <img class="foot-logo-img" src="images/logo-ensa.png" alt="ENSA" onerror="this.style.display='none'"/>
+      <div class="foot-logo-text"><span class="t">NOV</span><span class="e">E</span><span class="n">NSA</span></div>
+    </div>
+    <div class="foot-tag">Voir. Savoir. Partager. 🌊</div>
+    <div class="foot-copy">© 2025 NOVENSA</div>
+  </div>
+</div>
+
+
+<!-- ════════════════════════════════════════
+     PAGE: CARRIÈRES
+     ════════════════════════════════════════ -->
+<div id="carrieres" class="page">
+
+  <div class="top-bar">
+    <span class="tb-left">✦ NOVENSA — ENSA TANGER</span>
+    <div class="tb-right"><div class="tb-dot"></div><span class="tb-live">Printemps 2025</span></div>
+  </div>
+
+  <nav class="nav">
+    <div class="nav-logo" onclick="showPage('home')">
+      <img class="ensa-logo-img" src="images/logo-ensa.png" alt="ENSA" onerror="this.style.display='none'"/>
+      <div class="logo-sep"></div>
+      <div>
+        <div class="logo-name"><span class="nov">NOV</span><span class="e">E</span><span class="nsa">NSA</span></div>
+        <div class="logo-sub">LE MAGAZINE</div>
+      </div>
+    </div>
+    <div class="nav-links">
+      <span class="nl" onclick="showPage('home')">Accueil</span>
+      <span class="nl" onclick="showPage('etudiants')">Étudiants</span>
+      <span class="nl">Enseignants</span>
+      <span class="nl active">Carrières</span>
+      <span class="nl">Actualités</span>
+      <span class="nl">Archives</span>
+      <span class="nl alumni" onclick="showPage('alumni')">Alumni ✦</span>
+    </div>
+  </nav>
+
+  <div class="menu-bar">
+    <span class="mi active">Offres de stage</span>
+    <span class="mi">Offres d'emploi</span>
+    <span class="mi">Conseils CV</span>
+    <span class="mi">Partenaires</span>
+  </div>
+
+  <div class="content" style="padding-bottom:28px;">
+    <div class="sec-row" style="padding-top:28px;margin-top:0;">
+      <span class="sec-label">Toutes les Offres</span>
+      <span class="see-all">Filtrer →</span>
+    </div>
+    <div class="stg-grid" style="margin-bottom:24px;">
+      <div class="stg-card"><div class="stg-icon si-t">🏭</div><div><div class="stg-co">OCP Group — Casablanca</div><div class="stg-det">Stage PFE · GI · 6 mois</div><span class="stg-tag t-open">Ouvert</span></div></div>
+      <div class="stg-card"><div class="stg-icon si-g">📡</div><div><div class="stg-co">Inwi — Rabat</div><div class="stg-det">Stage · Réseaux · 3 mois</div><span class="stg-tag t-hot">Urgent</span></div></div>
+      <div class="stg-card"><div class="stg-icon si-t">🏦</div><div><div class="stg-co">Bank Al-Maghrib — Rabat</div><div class="stg-det">Stage PFE · GC · 4 mois</div><span class="stg-tag t-open">Ouvert</span></div></div>
+      <div class="stg-card"><div class="stg-icon si-g">⚡</div><div><div class="stg-co">Lydec — Casablanca</div><div class="stg-det">Stage PFE · GE · 6 mois</div><span class="stg-tag t-open">Ouvert</span></div></div>
+      <div class="stg-card"><div class="stg-icon si-t">💼</div><div><div class="stg-co">CBI Maroc — Casablanca</div><div class="stg-det">Stage · Finance & Data</div><span class="stg-tag t-hot">Urgent</span></div></div>
+      <div class="stg-card"><div class="stg-icon si-g">📱</div><div><div class="stg-co">Maroc Telecom</div><div class="stg-det">Stage · SI & Développement</div><span class="stg-tag t-full">Complet</span></div></div>
+    </div>
+    <button class="btn-back" onclick="showPage('home')">← Retour à l'accueil</button>
+  </div>
+
+  <div class="footer">
+    <div class="foot-logo">
+      <img class="foot-logo-img" src="images/logo-ensa.png" alt="ENSA" onerror="this.style.display='none'"/>
+      <div class="foot-logo-text"><span class="t">NOV</span><span class="e">E</span><span class="n">NSA</span></div>
+    </div>
+    <div class="foot-tag">Voir. Savoir. Partager. 🌊</div>
+    <div class="foot-copy">© 2025 NOVENSA</div>
+  </div>
+</div>
+
+
+<!-- ════════════════════════════════════════
+     FLOATING TOOLBAR
+     ════════════════════════════════════════ -->
+<div class="lang-bar">
+  <button class="lb-btn" id="darkBtn" onclick="toggleDark()">🌙 <span id="darkLabel">Mode Clair</span></button>
+  <button class="lb-btn" id="langBtn" onclick="toggleLang()">🌐 <span id="langLabel">العربية</span></button>
+</div>
+
+<!-- ════════════════════════════════════════
+     JAVASCRIPT
+     ════════════════════════════════════════ -->
+<script>
+// ── DARK MODE ──
+let isDark = true;
+function toggleDark(){
+  isDark = !isDark;
+  document.body.classList.toggle('light', !isDark);
+  document.getElementById('darkLabel').textContent = isDark
+    ? (currentLang==='fr'?'Mode Clair':'الوضع الفاتح')
+    : (currentLang==='fr'?'Mode Sombre':'الوضع الداكن');
+  document.getElementById('darkBtn').firstChild.textContent = isDark ? '🌙 ' : '☀️ ';
+}
+
+// ── TRANSLATIONS ──
+const TR = {
+  fr: {
+    /* TOP BARS */
+    tb1: '✦ NOVENSA — LE MAGAZINE DE L\'ENSA TANGER · Voir. Savoir. Partager.',
+    tb2: 'EN LIGNE · Printemps 2025',
+    tb3: '✦ NOVENSA — ENSA TANGER',
+    tb4: 'Printemps 2025',
+    tb5: 'ESPACE ALUMNI',
+    /* NAV */
+    nav_accueil: 'Accueil',
+    nav_etudiants: 'Étudiants',
+    nav_enseignants: 'Enseignants',
+    nav_carrieres: 'Carrières',
+    nav_actu: 'Actualités',
+    nav_archives: 'Archives',
+    nav_alumni: 'Alumni ✦',
+    nav_magazine: 'LE MAGAZINE',
+    /* HERO */
+    hero_eyebrow: 'À LA UNE · TANGER — DEUX MERS 🌊',
+    hero_title: 'L\'ingénieur de<br><span class="hl-t">demain</span> se forge<br>à <span class="hl-g">l\'ENSA Tanger</span>',
+    hero_sub: 'Là où la Méditerranée rencontre l\'Atlantique,<br><strong>NOVENSA</strong> raconte votre école.',
+    btn_explorer: 'Explorer →',
+    btn_alumni: 'Espace Alumni ✦',
+    hero_badge: '📍 ENSA Tanger — Campus Réel',
+    hero_stat_label: 'Étudiants actifs',
+    /* MENU BARS */
+    mi_home: ['Derniers articles','Vie du campus','Opinions','Ressources & Cours','Événements','Calendrier'],
+    mi_etudiants: ['Réalisations','Articles & Opinions','Vie du campus','Ressources & Cours'],
+    mi_alumni: ['Projets','Portraits','Réseau'],
+    mi_carrieres: ['Offres de stage','Offres d\'emploi','Conseils CV','Partenaires'],
+    /* SECTIONS */
+    sec_articles: 'Derniers Articles',
+    see_all: 'Voir tout →',
+    sec_campus: '✦ NOTRE CAMPUS',
+    campus_title: 'École Nationale des Sciences Appliquées de Tanger',
+    campus_text: 'Rattachée à l\'Université Abd El Malek Saâdi, l\'ENSA Tanger forme les ingénieurs de demain dans un cadre moderne, entre Méditerranée et Atlantique.',
+    campus_badge: '🏛️ ENSA Tanger — Université Abd El Malek Saâdi',
+    cs_etu: 'Étudiants', cs_fil: 'Filières', cs_alu: 'Alumni',
+    sec_stages: 'Carrières & Stages',
+    see_all_stages: 'Voir tout →',
+    sec_stats_art: 'Articles publiés', sec_stats_stg: 'Stages disponibles',
+    sec_stats_int: 'Interviews alumni', sec_stats_alu: 'Alumni connectés',
+    prog_gi: 'Génie Informatique', prog_gc: 'Génie Civil', prog_ge: 'Génie Électrique',
+    /* FOOTER */
+    foot_tag: 'Voir. Savoir. Partager. — Tanger, deux mers 🌊',
+    foot_tag2: 'Voir. Savoir. Partager. 🌊',
+    foot_copy: '© 2025 NOVENSA — ENSA Tanger',
+    foot_copy2: '© 2025 NOVENSA',
+    /* ARTICLES */
+    art1_cat: 'Étudiants · Campus', art1_tag: 'Vie campus',
+    art1_title: 'Les clubs de l\'ENSA à rejoindre absolument en 2025',
+    art1_author: 'Sara Benali', art1_date: '10 Avr',
+    art2_cat: 'Interviews · Alumni', art2_tag: 'Alumni',
+    art2_title: 'Un alumnus chez Google : son parcours depuis l\'ENSA Tanger',
+    art2_author: 'Anas Tazi', art2_date: '8 Avr',
+    art3_cat: 'Conseils · Études', art3_tag: 'Conseils',
+    art3_title: 'Méthodes de révision pour réussir les partiels à l\'ENSA',
+    art3_author: 'Fatima Zahrae', art3_date: '5 Avr',
+    /* ALUMNI PAGE */
+    ali_eyebrow: '✦ ESPACE ALUMNI NOVENSA',
+    ali_title: 'Vos projets sont<br>notre <em>inspiration</em>',
+    ali_sub: 'Un espace dédié aux ingénieurs diplômés de l\'ENSA Tanger pour partager leurs réalisations, inspirer les étudiants d\'aujourd\'hui et rester connectés à leur école.',
+    btn_soumettre: 'Soumettre mon projet',
+    btn_rejoindre: 'Rejoindre le réseau →',
+    asm1: 'Alumni connectés', asm2: 'Projets partagés', asm3: 'Promotions',
+    sec_projets: 'Projets Alumni · Inspiration', see_projets: 'Tous les projets →',
+    sec_portraits: 'Portraits Diplômés', see_portraits: 'Voir tous →',
+    ensa_sub: 'ENSA TANGER',
+    ensa_title: 'École Nationale des Sciences Appliquées',
+    /* STAGES CARDS */
+    stg1: 'OCP Group — Casablanca', stg1d: 'Stage PFE · Génie Informatique · 6 mois', stg1t: 'Ouvert',
+    stg2: 'Inwi — Rabat', stg2d: 'Stage · Réseaux & Télécoms', stg2t: 'Urgent',
+    stg3: 'Bank Al-Maghrib — Rabat', stg3d: 'Stage PFE · Génie Civil', stg3t: 'Ouvert',
+    stg4: 'Maroc Telecom — Casablanca', stg4d: 'Stage · Systèmes d\'information', stg4t: 'Complet',
+    /* ÉTUDIANTS PAGE */
+    sec_realisations: 'Réalisations Étudiants',
+    art_etu1_cat: 'Génie Informatique', art_etu1_title: 'Application de gestion des absences ENSA', art_etu1_tag: 'Réalisation', art_etu1_promo: 'Promo 2025',
+    art_etu2_cat: 'Génie Civil', art_etu2_title: 'Modélisation sismique d\'un pont à haubans', art_etu2_tag: 'Réalisation', art_etu2_promo: 'Promo 2025',
+    art_etu3_cat: 'Génie Électrique', art_etu3_title: 'Drone autonome pour inspection de lignes HT', art_etu3_tag: 'Innovation', art_etu3_promo: 'Promo 2025',
+    btn_back: '← Retour à l\'accueil',
+    /* CARRIERES */
+    sec_offres: 'Toutes les Offres',
+    carrieres_mi: ['Offres de stage','Offres d\'emploi','Conseils CV','Partenaires'],
+    /* LANG BTN */
+    langLabel: 'العربية',
+    darkLabel_on: 'Mode Clair',
+    darkLabel_off: 'Mode Sombre',
+  },
+  ar: {
+    tb1: '✦ نوفنسا — مجلة المدرسة الوطنية للعلوم التطبيقية بطنجة · انظر. اعلم. شارك.',
+    tb2: 'متصل · ربيع 2025',
+    tb3: '✦ نوفنسا — إنسا طنجة',
+    tb4: 'ربيع 2025',
+    tb5: 'فضاء الخريجين',
+    nav_accueil: 'الرئيسية',
+    nav_etudiants: 'الطلاب',
+    nav_enseignants: 'الأساتذة',
+    nav_carrieres: 'المسارات',
+    nav_actu: 'الأخبار',
+    nav_archives: 'الأرشيف',
+    nav_alumni: 'الخريجون ✦',
+    nav_magazine: 'المجلة',
+    hero_eyebrow: 'العدد الأول · طنجة — بحران 🌊',
+    hero_title: 'مهندس <span class="hl-t">الغد</span><br>يتشكّل في<br><span class="hl-g">إنسا طنجة</span>',
+    hero_sub: 'حيث يلتقي البحر الأبيض المتوسط بالأطلسي،<br><strong>نوفنسا</strong> تحكي قصة مدرستك.',
+    btn_explorer: 'اكتشف ←',
+    btn_alumni: 'فضاء الخريجين ✦',
+    hero_badge: '📍 إنسا طنجة — الحرم الجامعي',
+    hero_stat_label: 'طالب نشط',
+    mi_home: ['آخر المقالات','حياة الحرم','الآراء','موارد & دروس','الفعاليات','التقويم'],
+    mi_etudiants: ['الإنجازات','مقالات & آراء','حياة الحرم','موارد & دروس'],
+    mi_alumni: ['المشاريع','البورتريهات','الشبكة'],
+    mi_carrieres: ['عروض التدريب','عروض العمل','نصائح السيرة','الشركاء'],
+    sec_articles: 'آخر المقالات',
+    see_all: 'عرض الكل ←',
+    sec_campus: '✦ حرمنا الجامعي',
+    campus_title: 'المدرسة الوطنية للعلوم التطبيقية بطنجة',
+    campus_text: 'تابعة لجامعة عبد المالك السعدي، تُعدّ المدرسة الوطنية للعلوم التطبيقية بطنجة مهندسي الغد في إطار حديث، بين البحر الأبيض المتوسط والمحيط الأطلسي.',
+    campus_badge: '🏛️ إنسا طنجة — جامعة عبد المالك السعدي',
+    cs_etu: 'طالب', cs_fil: 'تخصصات', cs_alu: 'خريج',
+    sec_stages: 'المسارات & التدريب',
+    see_all_stages: 'عرض الكل ←',
+    sec_stats_art: 'مقال منشور', sec_stats_stg: 'فرصة تدريب',
+    sec_stats_int: 'مقابلة خريج', sec_stats_alu: 'خريج متصل',
+    prog_gi: 'هندسة المعلوميات', prog_gc: 'الهندسة المدنية', prog_ge: 'الهندسة الكهربائية',
+    foot_tag: 'انظر. اعلم. شارك. — طنجة، بحران 🌊',
+    foot_tag2: 'انظر. اعلم. شارك. 🌊',
+    foot_copy: '© 2025 نوفنسا — إنسا طنجة',
+    foot_copy2: '© 2025 نوفنسا',
+    art1_cat: 'الطلاب · الحرم', art1_tag: 'حياة الحرم',
+    art1_title: 'أبرز الأندية التي عليك الانضمام إليها في 2025',
+    art1_author: 'سارة بن علي', art1_date: '10 أبر',
+    art2_cat: 'مقابلات · الخريجون', art2_tag: 'خريجون',
+    art2_title: 'خريج في غوغل: مساره منذ إنسا طنجة',
+    art2_author: 'أنس تازي', art2_date: '8 أبر',
+    art3_cat: 'نصائح · الدراسة', art3_tag: 'نصائح',
+    art3_title: 'أساليب المراجعة لاجتياز امتحانات نهاية الفصل',
+    art3_author: 'فاطمة الزهراء', art3_date: '5 أبر',
+    ali_eyebrow: '✦ فضاء خريجي نوفنسا',
+    ali_title: 'مشاريعكم هي<br><em>إلهامنا</em>',
+    ali_sub: 'فضاء مخصص لمهندسي إنسا طنجة لمشاركة إنجازاتهم وإلهام طلاب اليوم والبقاء على تواصل مع مدرستهم.',
+    btn_soumettre: 'شارك مشروعي',
+    btn_rejoindre: 'انضم إلى الشبكة ←',
+    asm1: 'خريج متصل', asm2: 'مشروع مشارك', asm3: 'دفعات',
+    sec_projets: 'مشاريع الخريجين · إلهام', see_projets: 'جميع المشاريع ←',
+    sec_portraits: 'بورتريهات الخريجين', see_portraits: 'عرض الكل ←',
+    ensa_sub: 'إنسا طنجة',
+    ensa_title: 'المدرسة الوطنية للعلوم التطبيقية',
+    stg1: 'مجموعة OCP — الدار البيضاء', stg1d: 'تدريب PFE · هندسة المعلوميات · 6 أشهر', stg1t: 'متاح',
+    stg2: 'إنوي — الرباط', stg2d: 'تدريب · الشبكات والاتصالات', stg2t: 'عاجل',
+    stg3: 'بنك المغرب — الرباط', stg3d: 'تدريب PFE · الهندسة المدنية', stg3t: 'متاح',
+    stg4: 'اتصالات المغرب — الدار البيضاء', stg4d: 'تدريب · نظم المعلومات', stg4t: 'مكتمل',
+    sec_realisations: 'إنجازات الطلاب',
+    art_etu1_cat: 'هندسة المعلوميات', art_etu1_title: 'تطبيق لإدارة الغيابات بإنسا', art_etu1_tag: 'إنجاز', art_etu1_promo: 'دفعة 2025',
+    art_etu2_cat: 'الهندسة المدنية', art_etu2_title: 'نمذجة زلزالية لجسر معلق', art_etu2_tag: 'إنجاز', art_etu2_promo: 'دفعة 2025',
+    art_etu3_cat: 'الهندسة الكهربائية', art_etu3_title: 'طائرة مسيّرة لفحص خطوط الضغط العالي', art_etu3_tag: 'ابتكار', art_etu3_promo: 'دفعة 2025',
+    btn_back: 'العودة إلى الرئيسية →',
+    sec_offres: 'جميع العروض',
+    carrieres_mi: ['عروض التدريب','عروض العمل','نصائح السيرة','الشركاء'],
+    langLabel: 'Français',
+    darkLabel_on: 'الوضع الفاتح',
+    darkLabel_off: 'الوضع الداكن',
+  }
+};
+
+let currentLang = 'fr';
+
+function applyTranslations(lang){
+  const t = TR[lang];
+  // Top bars
+  document.querySelectorAll('.tb-left').forEach((el,i)=>{
+    if(i===0) el.textContent = t.tb1;
+    else el.textContent = t.tb3;
+  });
+  document.querySelectorAll('.tb-live').forEach((el,i)=>{
+    if(i===0) el.textContent = t.tb2;
+    else if(el.closest('#alumni')) el.textContent = t.tb5;
+    else el.textContent = t.tb4;
+  });
+  // Nav links
+  document.querySelectorAll('.nav-links').forEach(nav=>{
+    const links = nav.querySelectorAll('.nl');
+    links.forEach(l=>{
+      const txt = l.textContent.trim().replace(/\s*✦\s*/,'');
+      if(l.classList.contains('alumni')) l.textContent = t.nav_alumni;
+      else if(l.getAttribute('onclick')&&l.getAttribute('onclick').includes('home')) l.textContent = t.nav_accueil;
+      else if(l.getAttribute('onclick')&&l.getAttribute('onclick').includes('etudiants')) l.textContent = t.nav_etudiants;
+      else if(l.getAttribute('onclick')&&l.getAttribute('onclick').includes('carrieres')) l.textContent = t.nav_carrieres;
+      else if(l.getAttribute('onclick')&&l.getAttribute('onclick').includes('alumni')) l.textContent = t.nav_alumni;
+      else {
+        const frTxt = l.dataset.frText;
+        if(frTxt==='Enseignants') l.textContent = t.nav_enseignants;
+        else if(frTxt==='Actualités') l.textContent = t.nav_actu;
+        else if(frTxt==='Archives') l.textContent = t.nav_archives;
+      }
+    });
+    // store original fr text for reference
+  });
+  document.querySelectorAll('.logo-sub').forEach(el=> el.textContent = t.nav_magazine);
+  // Hero (home page)
+  const heroEyebrow = document.querySelector('#home .hero-eyebrow');
+  if(heroEyebrow){ const dot = heroEyebrow.querySelector('.live-dot'); heroEyebrow.innerHTML=''; if(dot) heroEyebrow.appendChild(dot); heroEyebrow.innerHTML += ' '+t.hero_eyebrow; }
+  const heroTitle = document.querySelector('#home .hero-title');
+  if(heroTitle) heroTitle.innerHTML = t.hero_title;
+  const heroSub = document.querySelector('#home .hero-sub');
+  if(heroSub) heroSub.innerHTML = t.hero_sub;
+  const heroBtns = document.querySelectorAll('#home .hero-btns button');
+  if(heroBtns[0]) heroBtns[0].textContent = t.btn_explorer;
+  if(heroBtns[1]) heroBtns[1].textContent = t.btn_alumni;
+  const heroBadge = document.querySelector('#home .hero-badge');
+  if(heroBadge) heroBadge.textContent = t.hero_badge;
+  const heroStatLabel = document.querySelector('#home .hero-stat');
+  if(heroStatLabel){ heroStatLabel.querySelector('strong').textContent='2 400+'; heroStatLabel.childNodes[heroStatLabel.childNodes.length-1].textContent = t.hero_stat_label; }
+  // Menu bars
+  document.querySelectorAll('#home .mi').forEach((el,i)=>{ if(t.mi_home[i]) el.textContent=t.mi_home[i]; });
+  document.querySelectorAll('#etudiants .mi').forEach((el,i)=>{ if(t.mi_etudiants[i]) el.textContent=t.mi_etudiants[i]; });
+  document.querySelectorAll('#alumni .mi').forEach((el,i)=>{ if(t.mi_alumni[i]) el.textContent=t.mi_alumni[i]; });
+  document.querySelectorAll('#carrieres .mi').forEach((el,i)=>{ if(t.mi_carrieres[i]) el.textContent=t.mi_carrieres[i]; });
+  // Section labels
+  const secLabels = document.querySelectorAll('#home .content .sec-label');
+  if(secLabels[0]) secLabels[0].textContent = t.sec_articles;
+  // See all
+  document.querySelectorAll('#home .content .see-all').forEach((el,i)=>{
+    el.textContent = i===0? t.see_all : t.see_all_stages;
+  });
+  // Campus feature
+  const campusEyebrow = document.querySelector('#home .campus-info-eyebrow');
+  if(campusEyebrow) campusEyebrow.textContent = t.sec_campus;
+  const campusTitle = document.querySelector('#home .campus-info-title');
+  if(campusTitle) campusTitle.textContent = t.campus_title;
+  const campusText = document.querySelector('#home .campus-info-text');
+  if(campusText) campusText.textContent = t.campus_text;
+  const campusBadge = document.querySelector('#home .campus-img-badge');
+  if(campusBadge) campusBadge.textContent = t.campus_badge;
+  const csLabels = document.querySelectorAll('#home .cs-label');
+  if(csLabels[0]) csLabels[0].textContent = t.cs_etu;
+  if(csLabels[1]) csLabels[1].textContent = t.cs_fil;
+  if(csLabels[2]) csLabels[2].textContent = t.cs_alu;
+  // Stages section home
+  const stgSecLabel = document.querySelector('#home .stages-sec .sec-label');
+  if(stgSecLabel) stgSecLabel.textContent = t.sec_stages;
+  // Stats
+  const statLabels = document.querySelectorAll('#home .stat-l');
+  if(statLabels[0]) statLabels[0].textContent = t.sec_stats_art;
+  if(statLabels[1]) statLabels[1].textContent = t.sec_stats_stg;
+  if(statLabels[2]) statLabels[2].textContent = t.sec_stats_int;
+  if(statLabels[3]) statLabels[3].textContent = t.sec_stats_alu;
+  // Progress bars
+  const progH = document.querySelectorAll('#home .prog-h span:first-child');
+  if(progH[0]) progH[0].textContent = t.prog_gi;
+  if(progH[1]) progH[1].textContent = t.prog_gc;
+  if(progH[2]) progH[2].textContent = t.prog_ge;
+  // Footer all pages
+  document.querySelectorAll('.foot-tag').forEach((el,i)=>{
+    el.textContent = i===3? t.foot_tag : t.foot_tag2;
+  });
+  document.querySelectorAll('.foot-copy').forEach(el=> el.textContent = t.foot_copy2);
+  // Articles home
+  const artCards = document.querySelectorAll('#home .arts-grid .art-card');
+  if(artCards[0]){
+    artCards[0].querySelector('.art-tag').textContent = t.art1_tag;
+    artCards[0].querySelector('.art-cat').textContent = t.art1_cat;
+    artCards[0].querySelector('.art-title').textContent = t.art1_title;
+    artCards[0].querySelector('.art-author').textContent = t.art1_author;
+    artCards[0].querySelector('.art-date').textContent = t.art1_date;
+  }
+  if(artCards[1]){
+    artCards[1].querySelector('.art-tag').textContent = t.art2_tag;
+    artCards[1].querySelector('.art-cat').textContent = t.art2_cat;
+    artCards[1].querySelector('.art-title').textContent = t.art2_title;
+    artCards[1].querySelector('.art-author').textContent = t.art2_author;
+    artCards[1].querySelector('.art-date').textContent = t.art2_date;
+  }
+  if(artCards[2]){
+    artCards[2].querySelector('.art-tag').textContent = t.art3_tag;
+    artCards[2].querySelector('.art-cat').textContent = t.art3_cat;
+    artCards[2].querySelector('.art-title').textContent = t.art3_title;
+    artCards[2].querySelector('.art-author').textContent = t.art3_author;
+    artCards[2].querySelector('.art-date').textContent = t.art3_date;
+  }
+  // Stages home cards
+  const stgCards = document.querySelectorAll('#home .stg-card');
+  const stgData=[['stg1','stg1d','stg1t'],['stg2','stg2d','stg2t'],['stg3','stg3d','stg3t'],['stg4','stg4d','stg4t']];
+  stgCards.forEach((card,i)=>{
+    if(!stgData[i]) return;
+    const [k,kd,kt]=stgData[i];
+    const co=card.querySelector('.stg-co'); if(co) co.textContent=t[k];
+    const det=card.querySelector('.stg-det'); if(det) det.textContent=t[kd];
+    const tag=card.querySelector('.stg-tag'); if(tag) tag.textContent=t[kt];
+  });
+  // Alumni page
+  const aliEy = document.querySelector('#alumni .ali-eyebrow');
+  if(aliEy) aliEy.textContent = t.ali_eyebrow;
+  const aliTitle = document.querySelector('#alumni .ali-title');
+  if(aliTitle) aliTitle.innerHTML = t.ali_title;
+  const aliSub = document.querySelector('#alumni .ali-sub');
+  if(aliSub) aliSub.textContent = t.ali_sub;
+  const aliBtns = document.querySelectorAll('#alumni .ali-btns button');
+  if(aliBtns[0]) aliBtns[0].textContent = t.btn_soumettre;
+  if(aliBtns[1]) aliBtns[1].textContent = t.btn_rejoindre;
+  const asmLabels = document.querySelectorAll('#alumni .asm-label');
+  if(asmLabels[0]) asmLabels[0].textContent = t.asm1;
+  if(asmLabels[1]) asmLabels[1].textContent = t.asm2;
+  if(asmLabels[2]) asmLabels[2].textContent = t.asm3;
+  const aliSecLabels = document.querySelectorAll('#alumni .sec-label');
+  if(aliSecLabels[0]) aliSecLabels[0].textContent = t.sec_projets;
+  if(aliSecLabels[1]) aliSecLabels[1].textContent = t.sec_portraits;
+  const aliSeeAll = document.querySelectorAll('#alumni .see-all');
+  if(aliSeeAll[0]) aliSeeAll[0].textContent = t.see_projets;
+  if(aliSeeAll[1]) aliSeeAll[1].textContent = t.see_portraits;
+  const ensaSubEls = document.querySelectorAll('#alumni [style*="letter-spacing:2px"]');
+  ensaSubEls.forEach(el=>{ if(el.textContent.includes('ENSA')||el.textContent.includes('إنسا')) el.textContent=t.ensa_sub; });
+  const ensaTitleEl = document.querySelector('#alumni [style*="font-size:18px"]');
+  if(ensaTitleEl) ensaTitleEl.textContent = t.ensa_title;
+  // Étudiants page
+  const etuSecLabel = document.querySelector('#etudiants .sec-label');
+  if(etuSecLabel) etuSecLabel.textContent = t.sec_realisations;
+  const etuSeeAll = document.querySelector('#etudiants .see-all');
+  if(etuSeeAll) etuSeeAll.textContent = t.see_all;
+  const etuCards = document.querySelectorAll('#etudiants .art-card');
+  const etuData=[
+    ['art_etu1_tag','art_etu1_cat','art_etu1_title','art_etu1_promo'],
+    ['art_etu2_tag','art_etu2_cat','art_etu2_title','art_etu2_promo'],
+    ['art_etu3_tag','art_etu3_cat','art_etu3_title','art_etu3_promo'],
+  ];
+  etuCards.forEach((card,i)=>{
+    if(!etuData[i]) return;
+    const [kt,kc,kti,kp]=etuData[i];
+    const tag=card.querySelector('.art-tag'); if(tag) tag.textContent=t[kt];
+    const cat=card.querySelector('.art-cat'); if(cat) cat.textContent=t[kc];
+    const tit=card.querySelector('.art-title'); if(tit) tit.textContent=t[kti];
+    const dt=card.querySelector('.art-date'); if(dt) dt.textContent=t[kp];
+  });
+  // Btn back all pages
+  document.querySelectorAll('.btn-back').forEach(el=> el.textContent = t.btn_back);
+  // Carrieres
+  const carSecLabel = document.querySelector('#carrieres .sec-label');
+  if(carSecLabel) carSecLabel.textContent = t.sec_offres;
+  const carSeeAll = document.querySelector('#carrieres .see-all');
+  if(carSeeAll) carSeeAll.textContent = t.see_all;
+  const carStgCards = document.querySelectorAll('#carrieres .stg-card');
+  const carStgData=[['stg1','stg1d','stg1t'],['stg2','stg2d','stg2t'],['stg3','stg3d','stg3t'],['stg4','stg4d','stg4t'],
+    ['stg1','stg1d','stg1t'],['stg4','stg4d','stg4t']];
+  carStgCards.forEach((card,i)=>{
+    if(!carStgData[i]) return;
+    const [k,kd,kt]=carStgData[i];
+    const co=card.querySelector('.stg-co'); if(co) co.textContent=t[k];
+    const det=card.querySelector('.stg-det'); if(det) det.textContent=t[kd];
+    const tag=card.querySelector('.stg-tag'); if(tag) tag.textContent=t[kt];
+  });
+  // nav links without onclick - store fr text as data attribute first time
+  document.querySelectorAll('.nl:not([onclick])').forEach(el=>{
+    if(!el.dataset.frText){
+      el.dataset.frText = el.textContent.trim();
+    }
+  });
+  document.querySelectorAll('.nl:not([onclick])').forEach(el=>{
+    const fr = el.dataset.frText;
+    if(fr==='Enseignants') el.textContent=t.nav_enseignants;
+    else if(fr==='Actualités') el.textContent=t.nav_actu;
+    else if(fr==='Archives') el.textContent=t.nav_archives;
+  });
+  // lang button label
+  document.getElementById('langLabel').textContent = t.langLabel;
+  document.getElementById('darkLabel').textContent = isDark ? t.darkLabel_on : t.darkLabel_off;
+}
+
+// Store fr text for non-onclick nav links on load
+window.addEventListener('DOMContentLoaded', ()=>{
+  document.querySelectorAll('.nl:not([onclick])').forEach(el=>{
+    el.dataset.frText = el.textContent.trim();
+  });
+});
+
+function toggleLang(){
+  currentLang = currentLang==='fr'?'ar':'fr';
+  document.body.classList.toggle('ar', currentLang==='ar');
+  document.documentElement.lang = currentLang==='ar'?'ar':'fr';
+  applyTranslations(currentLang);
+}
+
+// ── Navigation entre pages ──
+function showPage(id) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  window.scrollTo && window.scrollTo(0, 0);
+}
+
+// ── Particles Hero ──
+const wrap = document.getElementById('particles');
+if (wrap) {
+  for (let i = 0; i < 18; i++) {
+    const p = document.createElement('div');
+    p.className = 'particle';
+    const s = Math.random() * 4 + 2;
+    p.style.cssText = `
+      width:${s}px; height:${s}px;
+      left:${Math.random() * 100}%;
+      top:${Math.random() * 100}%;
+      opacity:${Math.random() * .5 + .2};
+      animation: particleFloat ${Math.random() * 4 + 4}s ease-in-out infinite ${Math.random() * 3}s;
+    `;
+    wrap.appendChild(p);
+  }
+}
+
+// ── Menu Bar active ──
+document.querySelectorAll('.mi').forEach(item => {
+  item.addEventListener('click', function() {
+    this.closest('.menu-bar').querySelectorAll('.mi').forEach(m => m.classList.remove('active'));
+    this.classList.add('active');
+  });
+});
+</script>
+
+</body>
+</html>
